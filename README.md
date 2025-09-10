@@ -33,7 +33,7 @@ This project presents an in-depth exploratory data analysis (EDA) of the BigMart
 - **Rows:** 8,523
 - **Columns:** 12 (plus engineered features)
 - **Target:** `Item_Outlet_Sales` (sales amount per item-outlet)
-- **Source:** [Datahack BigMart Sales](https://datahack.analyticsvidhya.com/contest/practice-problem-big-mart-sales-prediction/)
+- **Source:** [BigMart Sales Dataset on Kaggle](https://www.kaggle.com/datasets/yasserh/bigmartsalesdataset)
 - **File:** `BigMart_sales.csv` (place in project root)
 
 ### Main Variables
