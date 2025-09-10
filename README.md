@@ -1,79 +1,124 @@
-# BigMart Sales Exploratory Data Analysis (EDA)
+# 🛒 BigMart Sales Exploratory Data Analysis (EDA)
 
-## Project Overview
+## Table of Contents
 
-This project performs an exploratory data analysis (EDA) on the BigMart sales dataset to uncover patterns, trends, and factors influencing sales. It involves data cleaning, visualization, and feature engineering using Python libraries such as Pandas, NumPy, Matplotlib, and Seaborn.
+- [Overview](#overview)
+- [Project Objectives](#project-objectives)
+- [Dataset Description](#dataset-description)
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
+- [Data Cleaning & Preprocessing](#data-cleaning--preprocessing)
+- [Feature Engineering](#feature-engineering)
+- [Exploratory Data Analysis](#exploratory-data-analysis)
+- [Key Insights & Results](#key-insights--results)
+- [Recommendations](#recommendations)
+- [Future Work](#future-work)
+- [Acknowledgments](#acknowledgments)
+- [License](#license)
+
+---
+
+## Overview
+
+This project presents an in-depth exploratory data analysis (EDA) of the BigMart Sales dataset. The goal is to uncover key drivers of product sales across outlets using advanced data cleaning, feature engineering, rigorous analysis, and clear visualization. These insights support business strategy and growth in the retail sector.
+
+---
+
+## Project Objectives
+
+- Analyze and visualize BigMart sales data to understand trends, patterns, and anomalies
+- Identify factors significantly impacting outlet sales
+- Engineer new, informative features for deeper analysis
+- Make clear recommendations for retail decision-making and future analytics
 
 ---
 
 ## Dataset Description
 
-- **Rows:** 8,523  
-- **Columns:** 12  
-- **Features include:**  
-  - Item details: `Item_Identifier`, `Item_Weight`, `Item_Fat_Content`, `Item_Visibility`, `Item_Type`, `Item_MRP`  
-  - Outlet details: `Outlet_Identifier`, `Outlet_Establishment_Year`, `Outlet_Size`, `Outlet_Location_Type`, `Outlet_Type`  
-  - Target variable: `Item_Outlet_Sales`
+- **Rows:** 8,523
+- **Columns:** 12 (plus engineered features)
+- **Target:** `Item_Outlet_Sales` (sales amount per item-outlet)
+- **Source:** [Datahack BigMart Sales](https://datahack.analyticsvidhya.com/contest/practice-problem-big-mart-sales-prediction/)
+- **File:** `BigMart_sales.csv` (place in project root)
+
+### Main Variables
+
+| Column Name                | Description                                   |
+|----------------------------|-----------------------------------------------|
+| Item_Identifier            | Unique item code                              |
+| Item_Weight                | Product weight (kg)                           |
+| Item_Fat_Content           | Fat level (Low Fat/Regular)                   |
+| Item_Visibility            | % shelf display in store                      |
+| Item_Type                  | Category (Dairy, Household, etc.)             |
+| Item_MRP                   | Maximum Retail Price                          |
+| Outlet_Identifier          | Unique outlet/store code                      |
+| Outlet_Establishment_Year  | Year outlet was established                   |
+| Outlet_Size                | Outlet size: Small/Medium/High                |
+| Outlet_Location_Type       | City tier: Tier 1/2/3                         |
+| Outlet_Type                | Supermarket/Grocery Store                     |
+| Item_Outlet_Sales          | Sales for this item-outlet (target variable)  |
 
 ---
 
-## Problem Statement
+### Prerequisites
 
-- Analyze the dataset to understand factors impacting sales in each outlet.  
-- Identify anomalies and trends via charts and visuals.  
-- Handle missing values and outliers effectively to clean the data.
-
----
-
-## Data Cleaning and Preprocessing
-
-- Missing values found in `Item_Weight` (~17%) and `Outlet_Size` (~28%).  
-- Imputed missing `Item_Weight` with median; missing `Outlet_Size` with mode.  
-- Corrected inconsistencies in `Item_Fat_Content` categories.  
-- Combined multiple supermarket types into one category.
+- Python 3.x
+- pandas, numpy, matplotlib, seaborn
 
 ---
 
-## Exploratory Analysis
+## Data Cleaning & Preprocessing
 
-- **Univariate Analysis:** Distribution plots for numerical columns and count plots for categorical features.  
-- **Bivariate Analysis:** Relationships between features like `Item_Weight` vs `Item_Outlet_Sales`, `Item_Type` vs `Item_Outlet_Sales`.  
-- **Multivariate Analysis:** Heatmaps of correlations and grouped bar plots for average sales by `Item_Type` and `Outlet_Type`.
-
----
-
-## Key Insights
-
-- Low Fat items have higher counts than Regular.  
-- Fruits, Vegetables, and Snack Foods are fast-selling item types.  
-- Supermarkets outperform grocery stores in sales, with Tier 3 locations having more outlets but similar median sales to others.  
-- Medium-sized outlets are most frequent; small outlets generally show lower sales.  
-- Price per unit weight correlates slightly with sales; higher MRP items tend to have higher sales.  
-- Little to no correlation found between `Item_Visibility` and sales, indicating missing or zero visibility scores need further investigation.
+- **Missing Values:**  
+  - `Item_Weight`: Imputed using the column median  
+  - `Outlet_Size`: Imputed using the column mode  
+- **Category Corrections:**  
+  - Standardized inconsistent fat content labels
+  - Consolidated outlet types (merged all supermarket subtypes)
+- **Data Types:**  
+  - Assigned proper types to categorical and numerical columns
+- **Duplicates:**  
+  - No duplicate entries found
 
 ---
 
 ## Feature Engineering
 
-- Created `Price per Weight` feature (Item_MRP / Item_Weight).  
-- Categorized `Item_MRP` into bands: Low, Medium, High, Very High.  
-- Classified `Item_Type` into `Healthy-Consumable`, `Non Healthy Consumable`, and `Non-Cosumable`.
+- **Price per Weight:** Unit price of items (`Item_MRP`/`Item_Weight`)
+- **MRP Categories:** Binned item price into Low, Medium, High, Very High
+- **Item_Category:** Classified item as Healthy-Consumable, Non-Healthy Consumable, Non-Consumable
 
 ---
 
-## How to Use
+## Exploratory Data Analysis
 
-1. Load the data using:  
-      df = pd.read_csv("BigMart_sales.csv")
-2. Perform data preprocessing and cleaning as described.  
-3. Visualize data and extract insights using the provided code snippets and charts.  
-4. Follow feature engineering steps to enhance dataset for modeling or further analysis.
+- **Univariate Analysis:**  
+  Distribution plots for numerical columns, count plots for categorical columns
+
+- **Bivariate/Multivariate Analysis:**  
+  - Boxplots and violin plots comparing sales by category, outlet type, and location
+  - Scatter plots for sales versus weight, MRP, and visibility
+  - Heatmap for numeric correlations
+
+- **Key EDA Outputs Include:**  
+  - Most items are labeled Low Fat  
+  - Item_Weight has a nearly normal (symmetric) distribution with average around 12.8kg  
+  - Higher MRP (price) correlates with higher sales  
+  - Supermarkets and Tier 3 outlets generate significantly more sales  
+  - Some outlet years underperform (notably, those opened in 1998)
 
 ---
 
-## Libraries Used
+## Key Insights & Results
 
-- numpy  
-- pandas  
-- matplotlib  
-- seaborn
+- **MRP is the dominant driver of sales:** Higher MRP leads to higher outlet sales
+- **Outlet Characteristics Matter:** Supermarkets and Tier 3 locations outperform others
+- **Visibility Score Weakness:** Higher item display percentage is not always tied to higher sales
+- **Category Leaders:** Starchy Foods and Seafood have the highest average sales among item types
+- **Year of Establishment:** Outlets opened in 1998 display consistently lower revenues
+
+---
+## Conclusion
+This analysis shows that product price (MRP), outlet type, and location tier are the main sales drivers for BigMart. Supermarkets in Tier 3 cities achieve higher sales, while item visibility on shelves does not directly impact sales significantly. Feature engineering enhanced understanding of sales patterns by categorizing products and pricing.
+
+These insights can help optimize pricing and marketing strategies to improve sales. Future work could include building predictive models and incorporating external factors for more robust forecasting.
