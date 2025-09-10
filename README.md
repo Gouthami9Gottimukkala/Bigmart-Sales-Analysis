@@ -5,16 +5,11 @@
 - [Overview](#overview)
 - [Project Objectives](#project-objectives)
 - [Dataset Description](#dataset-description)
-- [Getting Started](#getting-started)
-- [Project Structure](#project-structure)
 - [Data Cleaning & Preprocessing](#data-cleaning--preprocessing)
 - [Feature Engineering](#feature-engineering)
 - [Exploratory Data Analysis](#exploratory-data-analysis)
 - [Key Insights & Results](#key-insights--results)
-- [Recommendations](#recommendations)
-- [Future Work](#future-work)
-- [Acknowledgments](#acknowledgments)
-- [License](#license)
+- [Conclusion](#conclusion--results)
 
 ---
 
